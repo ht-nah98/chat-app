@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Img from "../DSC03929.jpg";
+import Img from "../User.jpg";
 import { onSnapshot, doc } from "firebase/firestore";
 import { db } from "../firebase";
 

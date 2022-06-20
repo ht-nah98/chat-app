@@ -46,7 +46,7 @@ const Home = () => {
 
   const selectUser = async (user) => {
     setChat(user);
-    // console.log('hh',user);
+    console.log("hh", user);
     const userWorld = "uWMUXes6unTIZpYesx9n";
     if (user.uid === userWorld) {
       const idWorld = "uWMUXes6unTIZpYesx9n99999";
@@ -67,6 +67,7 @@ const Home = () => {
         await updateDoc(doc(db, "lastMsg", idWorld), { unread: false });
       }
     } else {
+      setWorld(false);
       const user2 = user.uid;
       const id = user1 > user2 ? `${user1 + user2}` : `${user2 + user1}`;
       const msgsRef = collection(db, "messages", id, "chat");
@@ -88,61 +89,65 @@ const Home = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    const idWorld = "uWMUXes6unTIZpYesx9n99999";
-
-    const user2 = chat.uid;
-    const id = user1 > user2 ? `${user1 + user2}` : `${user2 + user1}`;
-    let url;
-    if (img) {
-      const imgRef = ref(
-        storage,
-        `images/${new Date().getTime()} -${img.name}`
-      );
-
-      const snap = await uploadBytes(imgRef, img);
-      const dlUrl = await getDownloadURL(ref(storage, snap.ref.fullPath));
-      url = dlUrl;
-    }
-    if (isWorld) {
-      await addDoc(collection(db, "messages", idWorld, "chat"), {
-        text,
-        checkUser:valiUser.email,
-        from: user1,
-        to: user2,
-        createdAt: Timestamp.fromDate(new Date()),
-        media: url || "",
-      });
-
-      await setDoc(doc(db, "lastMsg", id), {
-        text,
-        // checkUser,
-        from: user1,
-        to: user2,
-        createdAt: Timestamp.fromDate(new Date()),
-        media: url || "",
-        unread: true,
-      });
+    if (text === "") {
+      e.preventDefault();
     } else {
-      await addDoc(collection(db, "messages", id, "chat"), {
-        text,
-        from: user1,
-        to: user2,
-        createdAt: Timestamp.fromDate(new Date()),
-        media: url || "",
-      });
+      e.preventDefault();
+      const idWorld = "uWMUXes6unTIZpYesx9n99999";
 
-      await setDoc(doc(db, "lastMsg", id), {
-        text,
-        from: user1,
-        to: user2,
-        createdAt: Timestamp.fromDate(new Date()),
-        media: url || "",
-        unread: true,
-      });
+      const user2 = chat.uid;
+      const id = user1 > user2 ? `${user1 + user2}` : `${user2 + user1}`;
+      let url;
+      if (img) {
+        const imgRef = ref(
+          storage,
+          `images/${new Date().getTime()} -${img.name}`
+        );
+
+        const snap = await uploadBytes(imgRef, img);
+        const dlUrl = await getDownloadURL(ref(storage, snap.ref.fullPath));
+        url = dlUrl;
+      }
+      if (isWorld) {
+        await addDoc(collection(db, "messages", idWorld, "chat"), {
+          text,
+          checkUser: valiUser.email,
+          from: user1,
+          to: user2,
+          createdAt: Timestamp.fromDate(new Date()),
+          media: url || "",
+        });
+
+        await setDoc(doc(db, "lastMsg", id), {
+          text,
+          // checkUser,
+          from: user1,
+          to: user2,
+          createdAt: Timestamp.fromDate(new Date()),
+          media: url || "",
+          unread: true,
+        });
+      } else {
+        await addDoc(collection(db, "messages", id, "chat"), {
+          text,
+          from: user1,
+          to: user2,
+          createdAt: Timestamp.fromDate(new Date()),
+          media: url || "",
+        });
+
+        await setDoc(doc(db, "lastMsg", id), {
+          text,
+          from: user1,
+          to: user2,
+          createdAt: Timestamp.fromDate(new Date()),
+          media: url || "",
+          unread: true,
+        });
+      }
+      setImg("");
+      setText("");
     }
-
-    setText("");
   };
 
   return (
