@@ -1,32 +1,28 @@
 import React, { useState, useEffect } from "react";
-import Attachment from "./../components/svgs/Attachment";
+// import Attachment from "./../components/svgs/Attachment";
 import Img from "../images/ME.JPG";
-import { db, auth, storage } from "../firebase";
+import { db, auth } from "../firebase";
 import "react-slideshow-image/dist/styles.css";
-import { Slide } from "react-slideshow-image";
+// import { Slide } from "react-slideshow-image";
 import {
-  setDoc,
-  Timestamp,
-  doc,
-  getDoc,
   collection,
   query,
   onSnapshot,
   where,
 } from "firebase/firestore";
-import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
+// import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
 import { ListMyImage } from "../components/ListMyImage";
 
 export const Landing = () => {
   const user1 = auth.currentUser.uid;
-  const [user, setUser] = useState();
+  // const [user, setUser] = useState();
   const [images, setImages] = useState([]);
   useEffect(() => {
-    getDoc(doc(db, "users", user1)).then((docSnap) => {
-      if (docSnap.exists) {
-        setUser(docSnap.data());
-      }
-    });
+    // getDoc(doc(db, "users", user1)).then((docSnap) => {
+    //   if (docSnap.exists) {
+    //     setUser(docSnap.data());
+    //   }
+    // });
     const q = query(collection(db, "sharings"), where("isPublic", "==", true));
     // console.log(q);
     const unsub = onSnapshot(q, (querySnapshot) => {

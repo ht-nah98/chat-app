@@ -58,16 +58,16 @@ const Landing_noAuth = () => {
       <div className="image-position ">
         <Slide>
           <div className="each-slide">
-            <img src={Img1} className="each-img" />
+            <img src={Img1} className="each-img" alt="img1"/>
           </div>
           <div className="each-slide">
-            <img src={Img2} className="each-img" />
+            <img src={Img2} className="each-img" alt="img2"/>
           </div>
           <div className="each-slide">
-            <img src={Img3} className="each-img" />
+            <img src={Img3} className="each-img" alt="img3"/>
           </div>
           <div className="each-slide">
-            <img src={Img4} className="each-img" />
+            <img src={Img4} className="each-img" alt="img4"/>
           </div>
         </Slide>
       </div>

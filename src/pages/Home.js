@@ -22,7 +22,7 @@ const Home = () => {
   const [users, setUsers] = useState([]);
   const [chat, setChat] = useState("");
   const [isWorld, setWorld] = useState(false);
-  const [checkUser, setCheckUser] = useState("");
+  // const [checkUser, setCheckUser] = useState("");
   const [text, setText] = useState("");
   const [img, setImg] = useState("");
   const [msgs, setMsgs] = useState([]);
@@ -46,7 +46,7 @@ const Home = () => {
 
   const selectUser = async (user) => {
     setChat(user);
-    console.log("hh", user);
+    // console.log("hh", user);
     const userWorld = "uWMUXes6unTIZpYesx9n";
     if (user.uid === userWorld) {
       const idWorld = "uWMUXes6unTIZpYesx9n99999";

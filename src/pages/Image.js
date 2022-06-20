@@ -50,7 +50,6 @@ export const Image = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
     // console.log(isPublic);
     let url;
     if (share) {
@@ -63,27 +62,33 @@ export const Image = () => {
       url = dlUrl;
     }
     var rand = user1 + Math.random() * 9999;
+    if (url === "" || title === "" || description === "") {
+      e.preventDefault();
+      // setTitle("required")
+    } else {
+      e.preventDefault();
 
-    await setDoc(doc(db, "sharings", rand), {
-      user: user.name,
-      userid: user.uid,
-      title,
-      description,
-      media: url || "",
-      isPublic,
-      createAt: Timestamp.fromDate(new Date()),
-    });
-    // await addDoc(collection(db, "sharing", user1, "images"), {
-    //   user: user1,
-    //   title,
-    //   description,
-    //   media: url || "",
-    //   createAt: Timestamp.fromDate(new Date()),
-    // });
-    setTitle("");
-    setDes("");
-    setImg("");
-    setPublic(null);
+      await setDoc(doc(db, "sharings", rand), {
+        user: user.name,
+        userid: user.uid,
+        title,
+        description,
+        media: url || "",
+        isPublic,
+        createAt: Timestamp.fromDate(new Date()),
+      });
+      // await addDoc(collection(db, "sharing", user1, "images"), {
+      //   user: user1,
+      //   title,
+      //   description,
+      //   media: url || "",
+      //   createAt: Timestamp.fromDate(new Date()),
+      // });
+      setTitle("");
+      setDes("");
+      setImg("");
+      setPublic(null);
+    }
   };
 
   return (
@@ -121,6 +126,7 @@ export const Image = () => {
           <div className="input_container">
             <label htmlFor="title">Image Title</label>
             <input
+              placeholder="Required"
               type="text"
               name="title"
               value={title}
@@ -130,6 +136,7 @@ export const Image = () => {
           <div className="input_container">
             <label htmlFor="description">Description</label>
             <textarea
+              placeholder="Required"
               name="description"
               rows="5"
               cols="50"
