@@ -365,6 +365,7 @@ section .form {
   font-size: 15px;
   color: black;
   background: white;
+  height: 135px;
 }
 
 .myImage_title {

@@ -23,6 +23,7 @@ export const Image = () => {
   const [title, setTitle] = useState("");
   const [description, setDes] = useState("");
   const [isPublic, setPublic] = useState(true);
+  const [required, setRequired] = useState("");
   const user1 = auth.currentUser.uid;
 
   useEffect(() => {
@@ -39,7 +40,7 @@ export const Image = () => {
         images.push(doc.data());
       });
       setImages(images);
-      // console.log(images);
+      console.log("images", images);
     });
     return () => unsub();
   }, []);
@@ -50,7 +51,10 @@ export const Image = () => {
   };
 
   const handleSubmit = async (e) => {
+    e.preventDefault();
+    const text1 = "I love this environment and love my friend";
     // console.log(isPublic);
+
     let url;
     if (share) {
       const imgRef = ref(
@@ -63,11 +67,8 @@ export const Image = () => {
     }
     var rand = user1 + Math.random() * 9999;
     if (url === "" || title === "" || description === "") {
-      e.preventDefault();
-      // setTitle("required")
+      setRequired("Required");
     } else {
-      e.preventDefault();
-
       await setDoc(doc(db, "sharings", rand), {
         user: user.name,
         userid: user.uid,
@@ -126,7 +127,7 @@ export const Image = () => {
           <div className="input_container">
             <label htmlFor="title">Image Title</label>
             <input
-              placeholder="Required"
+              placeholder={required}
               type="text"
               name="title"
               value={title}
@@ -136,7 +137,8 @@ export const Image = () => {
           <div className="input_container">
             <label htmlFor="description">Description</label>
             <textarea
-              placeholder="Required"
+              maxlength={80}
+              placeholder={required}
               name="description"
               rows="5"
               cols="50"
