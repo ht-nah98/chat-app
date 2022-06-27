@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import Img from "../images/ME.JPG";
 import { db, auth } from "../firebase";
 import "react-slideshow-image/dist/styles.css";
+import Zyana from "../images/Zyana.jpeg"
+import logo from "../images/DSC01681.JPG"
 // import { Slide } from "react-slideshow-image";
 import {
   collection,
@@ -60,12 +62,12 @@ export const Landing = () => {
               <img src={Img} alt="name" className="member-img" />
             </div>
             <div className="member-item">
-              <p className="member-name">HA TIEN ANH</p>
-              <img src={Img} alt="name" className="member-img" />
+              <p className="member-name">Firebase</p>
+              <img src={logo} alt="name" className="member-img" />
             </div>
             <div className="member-item">
-              <p className="member-name">HA TIEN ANH</p>
-              <img src={Img} alt="name" className="member-img" />
+              <p className="member-name">ZHANIYA BALGOZHNA</p>
+              <img src={Zyana} alt="name" className="member-img" />
             </div>
             <div className="clear"></div>
           </div>

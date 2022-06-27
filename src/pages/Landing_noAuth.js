@@ -4,6 +4,8 @@ import Img2 from "../images/italia2.JPG";
 import Img3 from "../images/italia3.JPG";
 import Img4 from "../images/italia4.JPG";
 import Me from "../images/ME.JPG";
+import Zyana from "../images/Zyana.jpeg"
+import logo from "../images/DSC01681.JPG"
 import "react-slideshow-image/dist/styles.css";
 import { Slide } from "react-slideshow-image";
 
@@ -33,12 +35,12 @@ const Landing_noAuth = () => {
               <img src={Me} alt="name" className="member-img" />
             </div>
             <div className="member-item">
-              <p className="member-name">HA TIEN ANH</p>
-              <img src={Me} alt="name" className="member-img" />
+              <p className="member-name">Firebase</p>
+              <img src={logo} alt="name" className="member-img" />
             </div>
             <div className="member-item">
-              <p className="member-name">HA TIEN ANH</p>
-              <img src={Me} alt="name" className="member-img" />
+              <p className="member-name">ZHANIYA BALGOZHNA</p>
+              <img src={Zyana} alt="name" className="member-img" />
             </div>
             <div className="clear"></div>
           </div>
