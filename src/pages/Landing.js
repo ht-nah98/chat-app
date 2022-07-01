@@ -79,9 +79,9 @@ export const Landing = () => {
         <p className="section-sub-heading">Image for everyone</p>
 
         <ul className="finding-images">
-          <li>ABC </li>
-          <li>ABC</li>
-          <li>ABC</li>
+          <li>New Images </li>
+          <li>Most Like Images</li>
+          <li>My Image</li>
         </ul>
       </div>
       <div className="place-images">

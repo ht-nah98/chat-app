@@ -49,11 +49,16 @@ export const Image = () => {
     setShare(e.target.files[0]);
     setImg(URL.createObjectURL(file));
   };
+  const refreshPage = () => {
+    window.location.reload(false);
+  }
+
+ 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const text1 = "I love this environment and love my friend";
-    // console.log(isPublic);
+    console.log(isPublic);
 
     let url;
     if (share) {
@@ -88,7 +93,8 @@ export const Image = () => {
       setTitle("");
       setDes("");
       setImg("");
-      setPublic(null);
+      setPublic(true);
+      // refreshPage()
     }
   };
 
@@ -171,6 +177,7 @@ export const Image = () => {
           <div className="btn_container">
             <button className="btn">Upload</button>
           </div>
+          {/* <button onClick={refreshPage}>Click to reload!</button> */}
         </form>
       </section>
       <div className="myImages">

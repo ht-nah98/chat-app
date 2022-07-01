@@ -4,8 +4,8 @@ import Img2 from "../images/italia2.JPG";
 import Img3 from "../images/italia3.JPG";
 import Img4 from "../images/italia4.JPG";
 import Me from "../images/ME.JPG";
-import Zyana from "../images/Zyana.jpeg"
-import logo from "../images/DSC01681.JPG"
+import Zyana from "../images/Zyana.jpeg";
+import logo from "../images/DSC01681.JPG";
 import "react-slideshow-image/dist/styles.css";
 import { Slide } from "react-slideshow-image";
 
@@ -52,24 +52,24 @@ const Landing_noAuth = () => {
         <p className="section-sub-heading">Image for everyone</p>
 
         <ul className="finding-images">
-          <li>ABC </li>
-          <li>ABC</li>
-          <li>ABC</li>
+          <li>New Images </li>
+          <li>Most Like Images</li>
+          <li>My Image</li>
         </ul>
       </div>
       <div className="image-position ">
         <Slide>
           <div className="each-slide">
-            <img src={Img1} className="each-img" alt="img1"/>
+            <img src={Img1} className="each-img" alt="img1" />
           </div>
           <div className="each-slide">
-            <img src={Img2} className="each-img" alt="img2"/>
+            <img src={Img2} className="each-img" alt="img2" />
           </div>
           <div className="each-slide">
-            <img src={Img3} className="each-img" alt="img3"/>
+            <img src={Img3} className="each-img" alt="img3" />
           </div>
           <div className="each-slide">
-            <img src={Img4} className="each-img" alt="img4"/>
+            <img src={Img4} className="each-img" alt="img4" />
           </div>
         </Slide>
       </div>
